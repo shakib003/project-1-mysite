@@ -27,4 +27,13 @@ def index(request):  # landing page of food app
 
 # food/item/ will be handled by this function
 def item(request):
-    return HttpResponse("This is an item view")
+    return HttpResponse("This is an item view")  
+
+def detail(request, item_id):
+    item = Item.objects.get(pk=item_id)
+    context ={
+        "item" : item,
+    }
+
+    return render(request, "food/details.html", context)
+
